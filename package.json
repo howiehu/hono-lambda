@@ -8,19 +8,32 @@
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
-    "cdk": "cdk"
+    "cdk": "cdk",
+    "dev": "npm run build && dotenv -e .env.local sam local start-api",
+    "dev:watch": "npm run watch & dotenv -e .env.local sam local start-api --warm-containers EAGER",
+    "dev:debug": "npm run build && dotenv -e .env.local sam local start-api --debug",
+    "sam:build": "sam build",
+    "sam:validate": "sam validate",
+    "sam:invoke": "dotenv -e .env.local sam local invoke HonoFunction --no-event",
+    "deploy:dev": "npm run build && cdk deploy",
+    "deploy:prod": "npm run build && cdk deploy --profile production",
+    "diff": "cdk diff",
+    "synth": "cdk synth"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
     "@types/node": "22.7.9",
+    "aws-cdk": "2.1020.2",
+    "dotenv-cli": "^8.0.0",
+    "esbuild": "^0.25.6",
     "jest": "^29.7.0",
     "ts-jest": "^29.2.5",
-    "aws-cdk": "2.1020.2",
     "ts-node": "^10.9.2",
     "typescript": "~5.6.3"
   },
   "dependencies": {
     "aws-cdk-lib": "2.202.0",
-    "constructs": "^10.0.0"
+    "constructs": "^10.0.0",
+    "hono": "^4.8.4"
   }
 }
