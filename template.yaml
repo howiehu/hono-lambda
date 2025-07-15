@@ -27,4 +27,4 @@ Resources:
 Outputs:
   HonoFunctionApi:
     Description: "Local API Gateway endpoint URL"
-    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/" 
+    Value: "http://127.0.0.1:3000"
